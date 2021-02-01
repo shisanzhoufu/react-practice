@@ -41,4 +41,51 @@
 - 多个类共存的操作，需要放到数组中进行拼接
 - 注释必须在{/*  */}进行书写
 
-##
+## 组件
+### 类组件
+- 一般称为动态组件，会有交互和数据修改
+- ReactDOM.render(<MyComponent/>)之后发生了什么
+    - React解析组件标签，找到了MyComponent组件
+    - 发现组件是用类定义的，随后new一个该类的实例，并通过实例调用原型上的render方法
+    - 将render返回虚拟DOM转为真实DOM，随后呈现在页面中
+```javascript
+
+class MyComponent extends React.Component{
+    render(){
+        return (
+            <div>
+                <h1>hello class</h1>
+                
+                <Hellowarld fun="继承的函数"/>
+            </div>
+        )
+    }
+}
+```
+### 函数式组件
+- 一般按用于静态没有交互的组件页面
+```javascript
+//函数式组件
+function Hellowarld(props){
+    let content  = <p>函数式组件的内容</p>
+    return (
+        <div>
+            <h1>hello function</h1>
+            {content}
+            {props}
+        </div>
+    )
+}
+```
+### 组件的核心属性
+#### state
+- state是组件最重要的属性，值是对象 `state = {}`
+- 组件被称为“状态机”，通过更新组件的state来更新对应的页面显示（重新渲染页面）
+- 通过setState方法修改数据
+- 自定义方法的this为undefined怎么办？
+    - bind强制绑定this
+    - 箭头函数
+
+#### props
+- 每个组件对象都会又props属性
+- 组件标签所有属性都保存在props上

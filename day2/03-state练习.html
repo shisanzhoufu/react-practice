@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+</head>
+<body>
+    <!-- 根节点 -->
+    <div id="test"> </div>
+    <!-- 引入库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    
+    <script type="text/babel">
+        class Weather extends React.Component{
+            //constructor调用一次，和Weather保持一致
+            constructor(props){//用来初始化数据
+                super(props)
+                this.state = {isHot:true}
+                this.changeWeather = this.changeWeather.bind(this)//this是Weather的实例对象
+            }
+            //render调用n+1次，1是初始化，n是状态更新次数
+            render(){
+                console.log(this)
+                const {isHot} = this.state 
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h1>
+            }
+            //点击此调用几次
+            changeWeather(){
+                //由于类中开启了局部严格模式，所以changeWeather中的this是undefined
+                //changeWeather放在Weather的原型对象上，供实例调用
+
+            //state不能直接更改，要调用react的api    
+            // this.state.isHot = !this.state.isHot
+            const isHot = this.state.isHot
+            this.setState({isHot:!isHot})
+        }
+        }
+        //渲染DOM到页面
+        ReactDOM.render(<Weather/>,document.getElementById('test'))
+        
+    </script>
+</body>
+</html>
