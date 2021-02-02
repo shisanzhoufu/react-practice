@@ -89,3 +89,19 @@ function Hellowarld(props){
 #### props
 - 每个组件对象都会又props属性
 - 组件标签所有属性都保存在props上
+- props是只读的，不可修改
+- 可以对props的值进行限制
+```javascript
+Person.propTypes = {
+          name:PropTypes.string.isRequired,//限制name为必传字符串
+          age:PropTypes.number
+      }
+      //设置默认值
+      Person.defaultProps = {
+          age:88
+      }
+```
+- 作用
+    - 通过标签属性从组件外向组件内传递变化的数据
+#### refs
+- 组件里的标签通过ref标识自己

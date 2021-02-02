@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+</head>
+<body>
+    <!-- 根节点 -->
+    <div id="test"> </div>
+    <!-- 引入库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    
+    <script type="text/babel">
+      class Person extends React.Component{
+          state = {name:'jack',age:19};
+          static propTypes = {
+          name:PropTypes.string.isRequired,//限制name为必传字符串
+          age:PropTypes.number
+         }
+            //设置默认值
+            static defaultProps = {
+                age:88
+            }
+          render(){
+            const {name,age} = this.props
+              console.log(this)
+              return (
+                  <ul>
+                    <li>姓名：{name}</li>
+                    <li>年龄：{age}</li>
+                </ul>
+              )
+          }
+      }
+      
+        // ReactDOM.render(<Person name="tom" age = '19'/>,document.getElementById('test'))
+        //babel+react 只有在标签里才能使用标签运算t.getElementById('test'))
+        ReactDOM.render(<Person name="jack" age = {18}/>,document.getElementById('test'))
+        ReactDOM.render(<Person name="jack" />,document.getElementById('test'))
+
+    </script>
+</body>
+</html>
