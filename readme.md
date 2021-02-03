@@ -105,3 +105,33 @@ Person.propTypes = {
     - 通过标签属性从组件外向组件内传递变化的数据
 #### refs
 - 组件里的标签通过ref标识自己
+
+### 函数
+#### 柯里化
+- 通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的编码形式
+#### 高阶函数
+- 符合其中一条
+    - 若A函数接收的参数是一个函数
+    - 若A函数调用的返回值依然是一个1参数
+- 常见的高阶函数：Promise，setTimeOut arr.map等
+## 生命周期
+### 理解
+- 组件从创建到死亡它会经历一些特定的阶段。
+- React组件中包含一系列勾子函数(生命周期回调函数), 会在特定的时刻调用。
+- 我们在定义组件时，会在特定的生命周期回调函数中，做特定的工作。
+
+![172ed856eb89ea6e2fa3661ff52e9d55.png](en-resource://database/5395:0)
+
+### 生命周期的三个阶段（旧）
+- 初始化阶段: 由ReactDOM.render()触发---初次渲染
+    - constructor()
+    - componentWillMount()
+    - render()
+    - componentDidMount()
+- 更新阶段: 由组件内部this.setSate()或父组件重新render触发
+    - shouldComponentUpdate()
+    - componentWillUpdate()
+    - render()
+    - componentDidUpdate()
+-  卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+    - componentWillUnmount()

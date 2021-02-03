@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+</head>
+<body>
+    <!-- 根节点 -->
+    <div id="test"> </div>
+    <!-- 引入库 -->
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+    <script src="../js/prop-types.js"></script>
+    
+    <script type="text/babel">
+        class Demo extends React.Component{
+            // React.createRef调用后可以返回一个容器，该容器可以存储被ref所标识的节点
+            myRef = React.createRef()
+            showDate = ()=>{
+                alert(this.myRef.current.value)
+            }
+            render(){
+                return (
+                    <div>
+                        <input ref = {this.myRef} type="text" placeholder = "点击按钮提示数据"/>
+                        <button onClick = {this.showDate}>点我提示数据</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo a="1" />,document.getElementById('test'))
+
+    </script>
+</body>
+</html>
