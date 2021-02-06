@@ -165,3 +165,9 @@ Person.propTypes = {
 - 开发中如何选择key?:
    - 最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值。
    - 如果确定只是简单的展示数据，用index也是可以的。
+
+## 脚手架
+### 安装
+- `npm install -g  create-react-app`
+- ` create-react-app react-demo`
+- `npm start`
