@@ -1,25 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Item from '../Item'
 import './index.css'
 export default class List extends Component {
-    //对接收的数据进行限制
-    static propTypes = {
-        todos:PropTypes.array.isRequired,
-        updateTodo:PropTypes.func.isRequired,
-        deleteTodo:PropTypes.func.isRequired
-    }
+  static propTypes = {
+    userInfo:PropTypes.array.isRequired
+}
     render() {
-        const {todos,updateTodo,deleteTodo} = this.props
+      const {userInfo,isLoading,isFirst,err} = this.props
+      console.log(userInfo)
         return (
-            <ul className="todo-main"> 
-            {
-                todos.map((todos) => {
-                    return <Item key={todos.id} {...todos} updateTodo={updateTodo} deleteTodo={deleteTodo}/>
-                })
+          <div className="row">
+              {
+                isFirst ? <h2>输入关键词搜索用户</h2>:
+                isLoading ? <h2>Loading...</h2>:
+                err ? <h3>{err}</h3>:
+               userInfo.map((item) => {
+                 return(
+                  <div className="card" key={item.id}>
+                      <a href={item.html_url} target="_blank" rel="noreferrer">
+                        <img alt="head_avator"  src={item.avatar_url} style={{width:'100px'}}/>
+                      </a>
+                      <p className="card-text">{item.login}</p>
+                  </div>
+                 )
                 
-            }
-            </ul>
+                })
+              }
+          </div>
         )
     }
 }
