@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Item from '../Item'
+import PubSub from 'pubsub-js'
 import './index.css'
 export default class List extends Component {
-    //对接收的数据进行限制
-    static propTypes = {
-        todos:PropTypes.array.isRequired,
-        updateTodo:PropTypes.func.isRequired,
-        deleteTodo:PropTypes.func.isRequired
-    }
+  state={
+    userInfo:[],
+    isFirst:true,//是否第一次打开页面
+    isLoading:false,//是否加载中
+    err:''//储存错误信息
+  }
+  componentDidMount(){
+    //订阅消息
+    PubSub.subscribe('hui',(_,newState)=>{
+      this.setState(newState)
+    })
+  }
+
+  componentWillUnmount(){
+    PubSub.unsubscribe(this.token);
+  }
     render() {
-        const {todos,updateTodo,deleteTodo} = this.props
+      const {userInfo,isLoading,isFirst,err} = this.state
         return (
             <ul className="todo-main"> 
             {
