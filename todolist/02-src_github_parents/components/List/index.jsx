@@ -1,25 +1,13 @@
 import React, { Component } from 'react'
-import PubSub from 'pubsub-js'
+import PropTypes from 'prop-types'
 import './index.css'
 export default class List extends Component {
-  state={
-    userInfo:[],
-    isFirst:true,//是否第一次打开页面
-    isLoading:false,//是否加载中
-    err:''//储存错误信息
-  }
-  componentDidMount(){
-    //订阅消息
-    PubSub.subscribe('hui',(_,newState)=>{
-      this.setState(newState)
-    })
-  }
-
-  componentWillUnmount(){
-    PubSub.unsubscribe(this.token);
-  }
+  static propTypes = {
+    userInfo:PropTypes.array.isRequired
+}
     render() {
-      const {userInfo,isLoading,isFirst,err} = this.state
+      const {userInfo,isLoading,isFirst,err} = this.props
+      console.log(userInfo)
         return (
           <div className="row">
               {

@@ -35,10 +35,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   }
 =======
   },
   "proxy": "http://localhost:5000"
 >>>>>>> Stashed changes
+=======
+  },
+  "proxy":"http://localhost:5000"
+>>>>>>> e93a2086bb005e9d32e89268e26f5b1b9fae0258
 }
