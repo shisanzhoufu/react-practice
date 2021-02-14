@@ -6,9 +6,9 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "pubsub-js": "^1.9.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "web-vitals": "^1.0.1"
   },
@@ -35,15 +35,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
-<<<<<<< Updated upstream
   }
-=======
-  },
-  "proxy": "http://localhost:5000"
->>>>>>> Stashed changes
-=======
-  },
-  "proxy":"http://localhost:5000"
->>>>>>> e93a2086bb005e9d32e89268e26f5b1b9fae0258
 }
