@@ -315,3 +315,32 @@ Person.propTypes = {
 						(1).BrowserRouter没有任何影响，因为state保存在history对象中。
 						(2).HashRouter刷新后会导致路由state参数的丢失！！！
 			4.备注：HashRouter可以用于解决一些路径错误相关的问题。
+## redux
+### 什么是redux
+- redux是一个专门用于做状态管理的JS库(不是react插件库)。
+- 它可以用在react, angular, vue等项目中, 但基本与react配合使用。
+- 作用: 集中式管理react应用中多个组件共享的状态。
+### 使用场景
+- 某个组件的状态，需要让其他组件可以随时拿到（共享）。
+- 一个组件需要改变另一个组件的状态（通信）。
+- 总体原则：能不用就不用, 如果不用比较吃力才考虑使用。
+### redux的三个核心概念
+#### action
+- 动作的对象
+- 包含2个属性
+    - type：标识属性, 值为字符串, 唯一, 必要属性
+    - data：数据属性, 值类型任意, 可选属性
+- 例子：{ type: 'ADD_STUDENT',data:{name: 'tom',age:18} }
+#### reducer
+- 用于初始化状态、加工状态。
+- 加工时，根据旧的state和action， 产生新的state的纯函数。
+#### store
+- 将state、action、reducer联系在一起的对象
+- 如何得到此对象?
+    - import {createStore} from 'redux'
+    - import reducer from './reducers'
+    - const store = createStore(reducer)
+- 此对象的功能?
+    - getState(): 得到state
+    - dispatch(action): 分发action, 触发reducer调用, 产生新的state
+    - subscribe(listener): 注册监听, 当产生了新的state时, 自动调用
