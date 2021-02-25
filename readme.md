@@ -344,3 +344,31 @@ Person.propTypes = {
     - getState(): 得到state
     - dispatch(action): 分发action, 触发reducer调用, 产生新的state
     - subscribe(listener): 注册监听, 当产生了新的state时, 自动调用
+### react-Redux将所有组件分成两大类
+- UI组件
+    - 只负责 UI 的呈现，不带有任何业务逻辑
+    - 通过props接收数据(一般数据和函数)
+    - 不使用任何 Redux 的 API
+    - 一般保存在components文件夹下
+- 容器组件
+    - 负责管理数据和业务逻辑，不负责UI的呈现
+    - 使用 Redux 的 API
+    - 一般保存在containers文件夹下
+### 纯函数和高阶函数
+#### 纯函数
+- 一类特别的函数: 只要是同样的输入(实参)，必定得到同样的输出(返回)
+- 必须遵守以下一些约束  
+    - 不得改写参数数据
+    - 不会产生任何副作用，例如网络请求，输入和输出设备
+    - 不能调用Date.now()或者Math.random()等不纯的方法  
+- redux的reducer函数必须是一个纯函数
+#### 高阶函数
+- 理解: 一类特别的函数
+    - 情况1: 参数是函数
+    - 情况2: 返回是函数
+- 常见的高阶函数: 
+    - 定时器设置函数
+    - 数组的forEach()/map()/filter()/reduce()/find()/bind()
+    - promise
+    - react-redux中的connect函数
+- 作用: 能实现更加动态, 更加可扩展的功能
